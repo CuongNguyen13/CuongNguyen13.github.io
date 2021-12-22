@@ -1,0 +1,143 @@
+$(document).ready(function() {
+    // process bar
+    setTimeout(function() {
+        firstQuestion();
+        $('.spinner').fadeOut();
+        $('#preloader').delay(350).fadeOut('slow');
+        $('body').delay(350).css({
+            'overflow': 'visible'
+        });
+    }, 600);
+})
+
+function firstQuestion(){
+    
+    $('.content').hide();
+    Swal.fire({
+        title: 'He luu Ngốc!',
+        text: 'Anh có điều này muốn hỏi ngốc, Ngốc nhớ phải trả lời thật lòng nhaaa.',
+        color:"black",
+        imageUrl: 'https://c.tenor.com/c2Q7gB5QYfAAAAAj/christmas-winter.gif',
+        imageWidth: 300,
+        imageHeight: 300,
+        background: '#fff url("")',
+        imageAlt: 'Custom image',
+      }).then(function(){
+        $('.content').show(200);
+      })
+}
+
+ // switch button position
+ function switchButton() {
+    var audio = new Audio('../sound/duck.mp3');
+    audio.play();
+    var leftNo = $('#no').css("left");
+    var topNO = $('#no').css("top");
+    var leftY = $('#yes').css("left");
+    var topY = $('#yes').css("top");
+    $('#no').css("left", leftY);
+    $('#no').css("top", topY);
+    $('#yes').css("left", leftNo);
+    $('#yes').css("top", topNO);
+}
+// move random button póition
+function moveButton() {
+    var audio = new Audio('../sound/Swish1.mp3');
+    audio.play();
+    if (screen.width<=600) {
+        var x = Math.random() * 300;
+        var y = Math.random() * 500;
+    } else{
+        var x = Math.random() * 500;
+        var y = Math.random() * 500;
+    }
+    var left = x + 'px';
+    var top = y + 'px';
+    $('#no').css("left", left);
+    $('#no').css("top", top);
+}
+
+
+var n = 0;
+$('#no').mousemove(function() {
+    if (n < 1)
+        switchButton();
+    if (n > 1)
+        moveButton();
+    n++;
+});
+$('#no').click(() => {
+    if (screen.width>=900)
+        switchButton();
+})
+
+// generate text in input
+function textGenerate() {
+    var n = "";
+    var text = " Tại vì cậu đẹp trai vl :<<<<<<< ";
+    var a = Array.from(text);
+    var textVal = $('#txtReason').val() ? $('#txtReason').val() : "";
+    var count = textVal.length;
+    if (count > 0) {
+        for (let i = 1; i <= count; i++) {
+            n = n + a[i];
+            if (i == text.length + 1) {
+                $('#txtReason').val("");
+                n = "";
+                break;
+            }
+        }
+    }
+    $('#txtReason').val(n);
+    setTimeout("textGenerate()", 1);
+}
+//send mail.
+function sendmailDI(idea){
+    Email.send({
+        Host : "smtp.mailtrap.io",
+        Username:"3b8c4b95771e70",
+        Password:"d53767d8072e6e",
+        To : "vancuong123111@gmail.com",
+        From : "vancuong13032000@gmail.com",
+        Subject : "KIM NHUNG",
+        Body : "Ngốc đi nha"
+    }).then(
+    message => alert("Yêu em<3")
+    );}
+// show popup
+$('#yes').click(function() {
+    var audio = new Audio('../sound/tick.mp3');
+    audio.play();
+    Swal.fire({
+        html: true,
+        width: 900,
+        padding: '3em',
+        html: "<h2 style="+"color:red;"+">5h30 Anh qua đón ngốc nha <3  </h2>",
+        background: '#fff url("../img/iput-bg.jpg")',
+        backdrop: `
+              rgba(0,0,123,0.4)
+            //   url("../img/giphy2.gif")
+              left top
+              no-repeat
+            `,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#fe8a71',
+        cancelButtonColor: '#f6cd61',
+        confirmButtonText: 'Gửi cho tớ <3'
+    }).then((result) => {
+        if (result.value) {
+            Swal.fire({
+                width: 900,
+                confirmButtonText: 'Okiiiii lun <3',
+                background: '#fff url("https://www.icegif.com/wp-content/uploads/love-heart-icegif.gif")',
+                title: 'Anh biết mà ^^ Yêu Nhung 300000000000',
+                text:'5h30 nha, đừng có quên đó <3333', 
+                confirmButtonColor: '#83d0c9',
+                onClose: () => {
+                    sendmailDI();
+                  }
+            })
+        }
+    })
+})

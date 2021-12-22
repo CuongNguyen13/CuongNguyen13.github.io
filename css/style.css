@@ -1,0 +1,115 @@
+.content {
+    position: relative;
+    z-index: 3;
+  }
+  #no{
+    position: absolute;
+    display: inline-block;
+    left: 35%; 
+    top: 40vh;
+    -webkit-transition: all 0.1s ease-out;
+  }
+  #yes{
+    position: absolute;
+    display: inline-block;
+    left: 70%; 
+    top: 40vh;
+    -webkit-transition: all 0.3s ease-out;
+  }
+#bg{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .8;
+  /* height: 100vh; */
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-image: url('https://www.wishafriend.com/christmas/uploads/25642-christmas-gifs.gif');
+  background-size: cover;
+  background-position: 10%;
+  -webkit-filter: blur(4px);
+}
+.swal2-title, .swal2-content{
+  color: black   !important;
+}
+.swal2-popup {
+  border-radius: 15px !important;
+}
+
+header h2 {
+  font-family: 'Pacifico';
+  font-size: 50px;
+  text-align: center;
+	margin-bottom: 30px;
+  color: rgb(23, 132, 233);
+}
+header h4 {
+  font-family: 'Pacifico';
+  text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+  header h2 {
+    font-family: 'Pacifico';
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  header h4 {
+    font-family: 'Pacifico';
+    text-align: center;
+    padding: 15px;
+  }
+  #no{
+    position: absolute;
+    display: inline-block;
+    left: 7%; 
+    top: 40vh;
+    font-size: 14px;
+    padding: 3px;
+    -webkit-transition: all 0.1s ease-out;
+  }
+  #yes{
+    position: absolute;
+    display: inline-block;
+    left: 58%; 
+    top: 40vh;
+    font-size: 14px;
+    padding: 3px;
+    -webkit-transition: all 0.3s ease-out;
+  }
+}
+.text_center{
+  text-align: center;
+  color: rgb(23, 132, 233);
+  font-size: 60px;
+}
+.text_center1{
+  margin-left: 1em;
+  color: rgb(14, 13, 13);
+  font-size: 18px;
+}
+.space_top{
+  margin-top: 3em;
+}
+.space_btn{
+  margin-top: 7em;
+}
+.color-red{
+  color: red;
+}
+.color-yellow{
+  color: rgb(233, 233, 87);
+}
+.size-btn-text{
+  font-size: 45px;
+  margin-left: 3em;
+
+}
+.btn-pos{
+  position: absolute;
+  left: 23em;
+  top: 12.5em;
+}
